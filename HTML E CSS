@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+<style>
+    /* Reset básico de margem e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Layout principal */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0c0c11;
+    margin: 0;
+}
+
+/* Container que engloba a calculadora e o histórico */
+.calculadora-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    gap: 20px;
+}
+
+/* Estilo da calculadora */
+.calculadora {
+    background-color: #999999;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(146, 40, 40, 0.1);
+    flex-basis: 60%;
+}
+
+#visor {
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #f1eaea;
+    border-radius: 5px;
+}
+
+/* Estilo dos botões */
+.botoes button {
+    width: 23%;
+    height: 60px;
+    margin: 5px;
+    font-size: 20px;
+    border: none;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botoes button:hover {
+    background-color: #e0e0e0;
+}
+
+.botoes button:active {
+    background-color: #f1f1f1;
+}
+
+/* Estilo do histórico */
+.historico {
+    background-color: #cfced1;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex-basis: 35%;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f3efeff1;
+    font-weight: bold;
+}
+
+td {
+    cursor: pointer;
+}
+
+td:hover {
+    background-color: #e0e0e0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calculadora-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .calculadora {
+        width: 100%;
+    }
+
+    .historico {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+</style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculadora-container">
+        <div class="calculadora">
+            <input type="text" id="visor" disabled />
+            <div class="botoes">
+                <button onclick="adicionarNoVisor('7')">7</button>
+                <button onclick="adicionarNoVisor('8')">8</button>
+                <button onclick="adicionarNoVisor('9')">9</button>
+                <button onclick="adicionarNoVisor('+')">+</button>
+                <button onclick="adicionarNoVisor('4')">4</button>
+                <button onclick="adicionarNoVisor('5')">5</button>
+                <button onclick="adicionarNoVisor('6')">6</button>
+                <button onclick="adicionarNoVisor('-')">-</button>
+                <button onclick="adicionarNoVisor('1')">1</button>
+                <button onclick="adicionarNoVisor('2')">2</button>
+                <button onclick="adicionarNoVisor('3')">3</butt0n>
+                <button onclick="adicionarNoVisor('0')">0</button>
+                <button onclick="adicionarNoVisor('.')">.</button>
+                <button onclick="adicionarNoVisor('*')">*</button>
+                <button onclick="calcular()">=</button>
+                <button onclick="adicionarNoVisor('/')">/</button>
+                <button onclick="limparVisor()">C</button>
+            </div>
+        </div>
+        <div class="historico">
+            <h3>Histórico</h3>
+            <table id="historicoTabela">
+                <tr>
+                    <th>Resultado</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
