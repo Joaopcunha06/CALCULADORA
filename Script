@@ -1,0 +1,39 @@
+// Função para adicionar números e operadores ao visor
+function adicionarNoVisor(valor) {
+    document.getElementById('visor').value += valor;
+}
+
+// Função para calcular o resultado
+function calcular() {
+    let visor = document.getElementById('visor');
+    try {
+        let resultado = eval(visor.value);
+        if (resultado !== undefined) {
+            // Exibe o resultado no visor
+            visor.value = resultado;
+
+            // Adiciona o cálculo ao histórico
+            adicionarAoHistorico(visor.value);
+        }
+    } catch (e) {
+        visor.value = 'Erro';
+    }
+}
+
+// Função para limpar o visor
+function limparVisor() {
+    document.getElementById('visor').value = '';
+}
+
+// Função para adicionar ao histórico
+function adicionarAoHistorico(resultado) {
+    let tabela = document.getElementById('historicoTabela');
+    let novaLinha = tabela.insertRow(1);
+    let novaCelula = novaLinha.insertCell(0);
+    novaCelula.textContent = resultado;
+
+    // Adiciona evento de clique para substituir o visor com o histórico
+    novaCelula.onclick = function () {
+        document.getElementById('visor').value = resultado;
+    };
+}
